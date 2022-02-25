@@ -1,7 +1,3 @@
-ifeq ($(DAEMON),1)
-	DAEMON_ARG=-d
-endif
-
 # DOCKER section
 build: 
 	docker-compose build
