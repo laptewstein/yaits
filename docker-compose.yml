@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  data:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "3606:3606"
+    volumes:
+      - my_mysql_data:/var/lib/mysql
+  serve:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8888 -b '0.0.0.0'"
+    volumes:
+      - .:/yaits
+    ports:
+      - "8888:8888"
+    depends_on:
+      - data
+volumes:
+  my_mysql_data:
+
