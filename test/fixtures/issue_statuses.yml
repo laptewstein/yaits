@@ -1,0 +1,16 @@
+one:
+  id: 1
+  label: Open
+
+two:
+  id: 2
+  label: In progress
+
+three:
+  id: 3
+  label: In review
+
+four:
+  id: 4
+  label: Closed
+

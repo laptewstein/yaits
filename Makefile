@@ -1,11 +1,14 @@
 # DOCKER section
-build: 
-	docker-compose build
-serve: 
-	docker-compose run serve /bin/bash
-down: 
-	docker-compose down
-up: 
-	docker-compose up
 init:
-        docker-compose run --no-deps serve rails new . --force --database=data
+	docker-compose run --no-deps serve rails new . --force --database=data
+build:
+	docker-compose build
+
+up:
+	DB_USER='root' DB_PASSWORD='' docker-compose up
+down:
+	docker-compose down
+
+serve:
+	docker-compose run -e DB_USER='root' -e DB_PASSWORD='' serve /bin/bash
+

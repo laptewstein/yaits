@@ -1,0 +1,23 @@
+one:
+  label: P0
+  value: 0
+
+two:
+  label: P1
+  value: 1
+
+three:
+  label: High
+  value: 2
+
+four:
+  label: P2
+  value: 3
+
+five:
+  label: Medium
+  value: 4
+
+six:
+  label: Low
+  value: 5
