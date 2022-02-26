@@ -11,12 +11,13 @@ build the backend for it. Other developers should be able to use HTTP requests t
  - [ ] delete an issue
 
 Issues should...
- - [ ] be unique
- - [ ] have a short description
- - [ ] have a detailed description
- - [ ] have a priority
- - [ ] have a status (e.g. open, closed)
- - [ ] be assignable to a team member
+ - [x] be unique
+ - [x] have a short description
+ - [x] have a detailed description
+ - [x] have a priority
+ - [x] have a status (e.g. open, closed)
+ - [x] be assignable to a team member
+
 ...and include anything else you deem necessary.
 
 Too easy? Feel free to also consider...
@@ -28,6 +29,7 @@ Too easy? Feel free to also consider...
  -  [ ] conditional access to a subset of issues by non-team members
  -  [ ] allowing members to comment on issues
  -  [ ] voting for issues
+
 ...or anything else that strikes your fancy.
 
 When you're ready...
