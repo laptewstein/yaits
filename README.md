@@ -36,3 +36,9 @@ performance issues, along with what the future might hold for extending your ser
  - create a new git repository (or a similar shareable version control) at the start of your project,
 make sensible check-ins throughout your project, and
  - zip up your repo (including the version control directory) and publish away.
+
+
+#### Useful commands (along the Makefile)
+log into container: `make serve` 
+mysql db: `bundle exec rails db`
+testing: `bundle exec rails test <relative path dot rb>`
