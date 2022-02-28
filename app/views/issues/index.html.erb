@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Issues (total: <%= @issues.count %>)</h2>
+
+<div class="divTable redTable">
+  <div class="divTableHeading">
+    <div class="divTableRow">
+      <div class="divTableHead">Title</div>
+      <div class="divTableHead">Discipline</div>
+      <div class="divTableHead">Priority</div>
+      <div class="divTableHead">Status</div>
+      <div class="divTableHead">Assigned fellows</div>
+      <div class="divTableHead">Options</div>
+    </div>
+  </div>
+  <div class="divTableBody">
+    <% @issues.each do |issue| %>
+      <div class="divTableRow">
+        <div class="divTableCell">
+          <%= link_to issue.title, issue %>
+        </div>
+        <div class="divTableCell">
+          <%= link_to(issue.discipline.label, issues_path) if issue.discipline %>
+        </div>
+        <div class="divTableCell">
+          <%= link_to(issue.priority.label, issues_path) if issue.priority %>
+        </div>
+        <div class="divTableCell">
+          <%= link_to(issue.status.label, issues_path) if issue.status %>
+        </div>
+        <div class="divTableCell">
+          <% if issue.assignees.empty? %>
+            <em>Unassigned</em>
+          <% else %>
+            <% issue.assignees.each do |assignee| %>
+              <%= link_to(assignee.name, issues_path(sort: { type: 'assignee', criteria: 'exact', value: assignee.id })) %>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="divTableCell">
+          <%= link_to 'Edit', edit_issue_path(issue) %> | <%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="redTable outerTableFooter">
+  <div class="tableFootStyle">
+    <div class="links">
+      <%= link_to 'All Issues', issues_path %>
+      <%= link_to 'New Issue', new_issue_path %>
+    </div>
+  </div>
+</div>
