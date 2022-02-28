@@ -7,13 +7,13 @@
 4. Detach containers with `make down`. 
 
 ## Short Description, a living yet incomplete document
-_YAITS_ is a containerized rails application. It has a single controller exposing basic CRUD API [endpoints](https://github.com/Kartoshka548/yaits/blob/main/config/routes.rb#L2) and a few [databases tables](https://github.com/Kartoshka548/yaits/tree/main/db/migrate) for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
+_YAITS_ is a containerized rails application. It has a single [controller](https://github.com/Kartoshka548/yaits/blob/main/app/controllers/issues_controller.rb) exposing basic CRUD API [endpoints](https://github.com/Kartoshka548/yaits/blob/main/config/routes.rb#L2) and a few [databases tables](https://github.com/Kartoshka548/yaits/tree/main/db/migrate) for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
 
 Currently, we are able to support many more additional user signups only using rails console. Should one day the feature be reprioritized, this is a very low hanging fruit. 
 
 > One user can be working on many issues, and _any_ issue can be assigned to _any_ active user.
 
-Currently we do not _retain creator and reporter information_, even though we do have a [_many-to-many relationship_](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220226040845_add_issues_to_users.rb) ties between `User` and `Issue` models. One way to keep this info tagging along is to create a "data" pocket (of key-value type storage), holding reporter and creator's tracks, or _maybe_ change the way how we retrieve issue _assignees_ from issue's associated _users_ which might (or might not) include the roles above.  
+Currently we do not _retain creator and reporter information_, even though we do have a [_many-to-many relationship_](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220226040845_add_issues_to_users.rb) ties between `User` and `Issue` models. One way to keep this info tagging along is to create a "data" pocket (of key-value type storage), holding reporter and creator's tracks, or _maybe_ change the way how we retrieve issue [_assignees_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb#L5-L7) from issue's associated _users_ which might (or might not) include the roles above.  
 
 
 ## Task Overview
@@ -32,7 +32,7 @@ build the backend for it. Other developers should be able to use HTTP requests t
  - [x] have a detailed description
  - [x] have a [priority](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220225192053_create_issue_priorities.rb)
  - [x] have a [status](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220225182236_create_issue_statuses.rb) (e.g. open, closed)
- - [x] be [assignable](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb#L2) to a *[team member](https://github.com/Kartoshka548/yaits/issues/5)
+ - [x] be [assignable](https://github.com/Kartoshka548/yaits/blob/main/app/controllers/issues_controller.rb#L33) to a *[team member](https://github.com/Kartoshka548/yaits/issues/5)
 
 Too easy? Feel free to also consider...
  -  [x] simple [frontend](https://github.com/Kartoshka548/yaits/tree/main/app/views) forms/pages to expose the APIs for end users
