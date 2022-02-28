@@ -7,9 +7,10 @@
 4. Detach containers with `make down`. 
 
 ## Short Description, a living yet incomplete document
-_YAITS_ is a containerized rails application. It has a single [controller](https://github.com/Kartoshka548/yaits/blob/main/app/controllers/issues_controller.rb) exposing basic CRUD API [endpoints](https://github.com/Kartoshka548/yaits/blob/main/config/routes.rb#L2) and a few [databases tables](https://github.com/Kartoshka548/yaits/tree/main/db/migrate) for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
-
-Currently, we are able to support many more additional user signups only using rails console. Should one day the feature be reprioritized, this is a very low hanging fruit. 
+_YAITS_ is a containerized rails application. 
+It has a single [controller](https://github.com/Kartoshka548/yaits/blob/main/app/controllers/issues_controller.rb) exposing basic CRUD API [endpoints](https://github.com/Kartoshka548/yaits/blob/main/config/routes.rb#L2) and a few [databases tables](https://github.com/Kartoshka548/yaits/tree/main/db/migrate) for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
+Note: `index` admin page filtering is **additive**
+Currently we are supporting User signups only via the console.
 
 > One user can be working on many issues, and _any_ issue can be assigned to _any_ active user.
 
