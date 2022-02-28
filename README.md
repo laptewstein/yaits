@@ -7,12 +7,13 @@
 4. Detach containers with `make down`. 
 
 ## Short Description, a living yet incomplete document
-_YAITS_ is a containerized rails application. It has a single controller exposing basic CRUD API endpoints and a few databases tables for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
+_YAITS_ is a containerized rails application. It has a single controller exposing basic CRUD API [endpoints](https://github.com/Kartoshka548/yaits/blob/main/config/routes.rb#L2) and a few [databases tables](https://github.com/Kartoshka548/yaits/tree/main/db/migrate) for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
 
-Currently, we are able to support many more additional user signups only using rails console. Should one day the feature be reprioritized, this is a very low hanging fruit. Currently we have no means to retain issue _creator_ and _reporter_ information, even though we do have a _many-to-many relationship_ ties between `User` and `Issue` models. 
+Currently, we are able to support many more additional user signups only using rails console. Should one day the feature be reprioritized, this is a very low hanging fruit. 
 
 > One user can be working on many issues, and _any_ issue can be assigned to _any_ active user.
-One way to addd this data in is to create a data pocket (of key-value type storage), holding reporter and creator information amongst issue history or progress tracks or feedback.  
+
+Currently we do not _retain creator and reporter information_, even though we do have a [_many-to-many relationship_](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220226040845_add_issues_to_users.rb) ties between `User` and `Issue` models. One way to keep this info tagging along is to create a "data" pocket (of key-value type storage), holding reporter and creator's tracks, or _maybe_ change the way how we retrieve issue _assignees_ from issue's associated _users_ which might (or might not) include the roles above.  
 
 
 ## Task Overview
