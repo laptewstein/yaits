@@ -13,7 +13,7 @@ Currently, we are able to support many more additional user signups only using r
 
 > One user can be working on many issues, and _any_ issue can be assigned to _any_ active user.
 
-Currently we do not _retain creator and reporter information_, even though we do have a [_many-to-many relationship_](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220226040845_add_issues_to_users.rb) ties between `User` and `Issue` models. One way to keep this info tagging along is to create a "data" pocket (of key-value type storage), holding reporter and creator's tracks, or _maybe_ change the way how we retrieve issue [_assignees_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb#L5-L7) from issue's associated _users_ which might (or might not) include the roles above.  
+Currently we do not _retain creator and reporter information_, even though we do have a [_many-to-many relationship_](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220226040845_add_issues_to_users.rb) ties between `User` and `Issue` models. One way to keep this info tagging along is to create a "data" pocket (of key-value type storage), holding reporter and creator's tracks, or _maybe_ change the way how we retrieve issue [_assignees_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb#L5-L7) from issue's associated _users_ which might (or might not) include the roles above. Hybrid of these is even better. 
 
 
 ## Task Overview
