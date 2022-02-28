@@ -13,3 +13,99 @@
  *= require_tree .
  *= require_self
  */
+div.redTable {
+    border: 2px solid #A40808;
+    background-color: #EEE7DB;
+    width: 85%;
+    text-align: left;
+    border-collapse: collapse;
+}
+.divTable.redTable .divTableCell, .divTable.redTable .divTableHead {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+}
+.divTable.redTable .divTableBody .divTableCell {
+    font-size: 13px;
+}
+.divTable.redTable .divTableRow:nth-child(even) {
+    background: #F5C8BF;
+}
+.divTable.redTable .divTableHeading {
+    background: #A40808;
+}
+.divTable.redTable .divTableHeading .divTableHead {
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: left;
+    border-left: 2px solid #A40808;
+}
+.divTable.redTable .divTableHeading .divTableHead:first-child {
+    border-left: none;
+}
+
+.redTable .tableFootStyle {
+    font-size: 13px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #A40808;
+}
+.redTable .tableFootStyle {
+    font-size: 13px;
+}
+.redTable .tableFootStyle .links {
+    text-align: right;
+}
+.redTable .tableFootStyle .links a, .divTableCell:not(:first-child) a {
+    display: inline-block;
+    background: #FFFFFF;
+    color: #A40808;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+.redTable.outerTableFooter {
+    border-top: none;
+}
+.redTable.outerTableFooter .tableFootStyle {
+    padding: 3px 5px;
+}
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
+.divTableCell input, .divTableCell textarea { width: 400px; }
+h2 { text-shadow: 3px 1px 10px #00000094; }
+#error_explanation { color: crimson; }
+html {
+    background: url('https://img.freepik.com/free-psd/white-wood-texture-background-design_1022-75.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+header.component_header {
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.5;
+    font-family: Inter, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    border: 0 solid;
+    background: #000;
+    position: relative;
+    z-index: 100;
+    background: #000;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+    padding: 15px 0 10px 20px;
+    left: 0;
+}
+body {
+    margin: 80px 0 0 20px;
+}
