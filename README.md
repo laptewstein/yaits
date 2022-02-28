@@ -1,12 +1,21 @@
 #### Unity Sample Issue Tracking Service
 
-### TLDR
+## TLDR
 0. From within `make serve`, bootstrap the database with `bundle exec rake db:create db:migrate`. Exit.
 1. From within the repo, `make up`.
 3. Head to http://0.0.0.0:8888/issues.
 4. Detach containers with `make down`. 
 
-## Overview
+## Short Description, a living yet incomplete document
+_YAITS_ is a containerized rails application. It has a single controller exposing basic CRUD API endpoints and a few databases tables for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
+
+Currently, we are able to support many more additional user signups only using rails console. Should one day the feature be reprioritized, this is a very low hanging fruit. Currently we have no means to retain issue _creator_ and _reporter_ information, even though we do have a _many-to-many relationship_ ties between `User` and `Issue` models. 
+
+> One user can be working on many issues, and _any_ issue can be assigned to _any_ active user.
+One way to addd this data in is to create a data pocket (of key-value type storage), holding reporter and creator information amongst issue history or progress tracks or feedback.  
+
+
+## Task Overview
 Unity desperately needs yet another issue tracking service (YAITS!) and has chosen you to design and
 build the backend for it. Other developers should be able to use HTTP requests to invoke APIs that...
 
@@ -63,7 +72,12 @@ make sensible check-ins throughout your project
 2. mysql db: `bundle exec rails db`
 3. testing: `bundle exec rails test`
 4. testing (rspec): `bundle exec rspec`
-
+5. sample initial Priorities, Statuses and Disciplines: 
+```
+[["P0", 0], ["P1", 1], ['High', 2],['P2', 3],['Medium', 4],['Low', 5]].each { |k, v| IssuePriority.new(label: k, value: v).save }
+["Engineering", "UX", "Analytics", "CS", "Marketing", "Finance", "Sales"].each { |e| Discipline.new(label: e).save }
+["Open", "In progress", "In review", "Closed", "Reopened", "Wontfix"].each { |e| IssueStatus.new(label: e).save }
+```
 #### Project Routes
 ```
 bundle exec rails routes
