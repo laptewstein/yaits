@@ -1,0 +1,44 @@
+<%= form_with(model: issue, local: true) do |form| %>
+  <div class="divTable redTable">
+    <div class="divTableBody">
+      <div class="divTableRow">
+        <div class="divTableCell"><%= form.label :title, "* Title" %></div>
+        <div class="divTableCell"><%= form.text_field :title, placeholder: "Required" %></div>
+      </div>
+      <div class="divTableRow">
+        <div class="divTableCell"><%= form.label :description, "Description" %></div>
+        <div class="divTableCell"><%= form.text_area :description %></div>
+      </div>
+      <div class="divTableRow">
+        <div class="divTableCell"><%= form.label :discipline, "Discipline" %></div>
+        <div class="divTableCell"><%= form.collection_select(:discipline_id, Discipline.all, :id, :label, { :selected => issue.discipline&.id }) %></div>
+      </div>
+      <div class="divTableRow">
+        <div class="divTableCell"><%= form.label :priority, "Priority" %></div>
+        <div class="divTableCell"><%= form.collection_select(:issue_priority_id, IssuePriority.all, :id, :label) %></div>
+      </div>
+      <div class="divTableRow">
+        <div class="divTableCell"><%= form.label :status, "Status" %></div>
+        <div class="divTableCell"><%= form.collection_select(:issue_status_id, IssueStatus.all, :id, :label) %></div>
+      </div>
+      <div class="divTableRow">
+        <div class="divTableCell"><%= form.label :assignees, "Assignees" %></div>
+        <div class="divTableCell"><%= form.collection_select(:assignee_ids, User.all, :id, :as_simple_json, { :selected => issue.assignees.map(&:id) }, { multiple: true }) %></div>
+      </div>
+    </div>
+  </div>
+  <% if issue.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% issue.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+  <br>
+<% end %>

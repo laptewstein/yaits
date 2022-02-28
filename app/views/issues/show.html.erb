@@ -1,0 +1,44 @@
+<h2>Show #<%= @issue.id %></h2>
+
+<p id="notice"><%= notice %></p>
+<div class="divTable redTable">
+  <div class="divTableBody">
+    <div class="divTableRow">
+      <div class="divTableCell">Title</div>
+      <div class="divTableCell"><%= @issue.title %></div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell">Description</div>
+      <div class="divTableCell"><%= @issue.description %></div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell">Discipline</div>
+      <div class="divTableCell"><%= @issue.discipline&.label %></div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell">Priority</div>
+      <div class="divTableCell"><%= @issue.priority&.label %></div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell">Status</div>
+      <div class="divTableCell"><%= @issue.status&.label %></div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell">Assignees</div>
+      <div class="divTableCell"><%= @issue.assignees.map { |user| "#{user.name} (#{user.email})" }.join(', ') %></div>
+    </div>
+    <div class="divTableRow">
+      <div class="divTableCell">Created</div>
+      <div class="divTableCell"><%= @issue.created_at %></div>
+    </div>
+  </div>
+</div>
+<div class="redTable outerTableFooter">
+  <div class="tableFootStyle">
+    <div class="links">
+      <%= link_to 'Edit', edit_issue_path(@issue) %> |
+      <%= link_to 'Back', issues_path %>
+    </div>
+  </div>
+</div>
+
