@@ -1,34 +1,33 @@
 #### Unity Sample Issue Tracking Service
 
-### How to run assuming you have installed docker and cloned this repository
-1. From within project's folder, type `make up`
-2. Head to http://0.0.0.0:8888/issues
-3. Do not forget to detach containers with `make down` 
+## TLDR
+0. From within `make serve`, bootstrap the database with `bundle exec rake db:create db:migrate`. Exit.
+1. From within the repo, `make up`.
+3. Head to http://0.0.0.0:8888/issues.
+4. Detach containers with `make down`. 
 
 ## Overview
 Unity desperately needs yet another issue tracking service (YAITS!) and has chosen you to design and
 build the backend for it. Other developers should be able to use HTTP requests to invoke APIs that...
 
- - [x] get a list of issues
- - [x] search issues via attribute criteria matching (e.g. find issues of priority 7 or higher)
- - [x] create a new issue
- - [x] update an issue
- - [x] delete an issue
+ - [x] [get a list of issues](https://github.com/Kartoshka548/yaits/blob/main/test/controllers/issues_controller_test.rb#L8-L11)
+ - [x] [search issues](https://github.com/Kartoshka548/yaits/blob/main/spec/requests/issue_spec.rb) via attribute criteria matching (e.g. find issues of priority 7 or [higher](https://github.com/Kartoshka548/yaits/blob/main/app/controllers/issues_controller.rb#L132-L135))
+ - [x] [create a new issue](https://github.com/Kartoshka548/yaits/blob/main/test/controllers/issues_controller_test.rb#L18-L23)
+ - [x] [update an issue](https://github.com/Kartoshka548/yaits/blob/main/test/controllers/issues_controller_test.rb#L35-L38)
+ - [x] [delete an issue](https://github.com/Kartoshka548/yaits/blob/main/test/controllers/issues_controller_test.rb#L40-L43)
 
-Issues should...
- - [x] be unique
+[Issues](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb) should...
+ - [x] be [unique](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220225224318_create_issues.rb#L23)
  - [x] have a short description
  - [x] have a detailed description
- - [x] have a priority
- - [x] have a status (e.g. open, closed)
- - [x] be assignable to a *[team member](https://github.com/Kartoshka548/yaits/issues/5)
-
-...and include anything else you deem necessary.
+ - [x] have a [priority](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220225192053_create_issue_priorities.rb)
+ - [x] have a [status](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220225182236_create_issue_statuses.rb) (e.g. open, closed)
+ - [x] be [assignable](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb#L2) to a *[team member](https://github.com/Kartoshka548/yaits/issues/5)
 
 Too easy? Feel free to also consider...
- -  [x] simple frontend forms/pages to expose the APIs for end users
- -  [x] tests
- -  [x] deployment scripts/tools
+ -  [x] simple [frontend](https://github.com/Kartoshka548/yaits/tree/main/app/views) forms/pages to expose the APIs for end users
+ -  [x] [tests](https://github.com/Kartoshka548/yaits/tree/main/test/fixtures)
+ -  [x] deployment scripts/[tools](https://github.com/Kartoshka548/yaits/blob/main/Makefile#L9)
  -  [ ] authentication
  -  [ ] a system for inviting members into a team
  -  [ ] conditional access to a subset of issues by non-team members
