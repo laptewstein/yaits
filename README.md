@@ -4,11 +4,11 @@
 Unity desperately needs yet another issue tracking service (YAITS!) and has chosen you to design and
 build the backend for it. Other developers should be able to use HTTP requests to invoke APIs that...
 
- - [ ] get a list of issues
- - [ ] search issues via attribute criteria matching (e.g. find issues of priority 7 or higher)
- - [ ] create a new issue
- - [ ] update an issue
- - [ ] delete an issue
+ - [x] get a list of issues
+ - [x] search issues via attribute criteria matching (e.g. find issues of priority 7 or higher)
+ - [x] create a new issue
+ - [x] update an issue
+ - [x] delete an issue
 
 Issues should...
  - [x] be unique
@@ -21,9 +21,9 @@ Issues should...
 ...and include anything else you deem necessary.
 
 Too easy? Feel free to also consider...
- -  [ ] simple frontend forms/pages to expose the APIs for end users
- -  [ ] tests
- -  [ ] deployment scripts/tools
+ -  [x] simple frontend forms/pages to expose the APIs for end users
+ -  [x] tests
+ -  [x] deployment scripts/tools
  -  [ ] authentication
  -  [ ] a system for inviting members into a team
  -  [ ] conditional access to a subset of issues by non-team members
@@ -35,7 +35,7 @@ Too easy? Feel free to also consider...
 When you're ready...
  - [ ] include a short description of your design, discussing any trade-offs/compromises, scale, or
 performance issues, along with what the future might hold for extending your service,
- - [ ] create a new git repository (or a similar shareable version control) at the start of your project,
+ - [x] create a new git repository (or a similar shareable version control) at the start of your project,
 make sensible check-ins throughout your project
  - [ ] zip up your repo (including the version control directory) and publish away.
 
@@ -64,3 +64,16 @@ bundle exec rails routes
               DELETE    /issues/:id(.:format)         issues#destroy
 ```
 
+GET/POST Index `/issues(?...)`
+![Screen Shot 2022-02-27 at 9 11 11 PM](https://user-images.githubusercontent.com/2070909/155913037-841b420a-0468-4c4e-aadb-9cdc75da8d80.png)
+
+GET New `/issues/new`
+![Screen Shot 2022-02-27 at 9 11 27 PM](https://user-images.githubusercontent.com/2070909/155913049-be2bc65c-c5fb-43b2-a9a1-729dea1aa58f.png)
+
+GET/PATCH/PUT Edit `/issues/<id>/edit`
+![Screen Shot 2022-02-27 at 9 11 46 PM](https://user-images.githubusercontent.com/2070909/155913065-80512a7a-30d3-4047-8789-f2b4ac079fbb.png)
+
+GET Show `/issues/<id>`
+![Screen Shot 2022-02-27 at 9 12 02 PM](https://user-images.githubusercontent.com/2070909/155913137-02ded449-6217-453a-91ef-239904846e8a.png)
+
+DELETE `/issues/<id>`
