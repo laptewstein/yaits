@@ -40,7 +40,8 @@ make sensible check-ins throughout your project
  - [ ] zip up your repo (including the version control directory) and publish away.
 
 #### Useful commands (along the Makefile)
-log into container: `make serve` 
-mysql db: `bundle exec rails db`
-testing: `bundle exec rails test <relative path dot rb>`
+1. log into container: `make serve` 
+2. mysql db: `bundle exec rails db`
+3. testing: `bundle exec rails test <relative path dot rb>`
+4. testing rspec: `bundle exec rspec <relative path dot rb>`
 

@@ -5,7 +5,7 @@ services:
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
     ports:
-      - "3606:3606"
+      - "3306:3306"
     volumes:
       - my_mysql_data:/var/lib/mysql
   serve:
