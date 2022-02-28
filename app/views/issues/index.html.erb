@@ -22,19 +22,19 @@
         <div class="divTableCell">
           <%= link_to(
                   issue.discipline.label,
-                  issues_path(discipline: { id: issue.discipline.id }, **params.as_json)
+                  issues_path(params.as_json.update({ discipline: { id: issue.discipline.id }}))
               ) if issue.discipline %>
         </div>
         <div class="divTableCell">
           <%= link_to(
                   issue.priority.label,
-                  issues_path(priority: { value: issue.priority.value }, **params.as_json)
+                  issues_path(params.as_json.update({ priority: { value: issue.priority.value }}))
               ) if issue.priority %>
         </div>
         <div class="divTableCell">
           <%= link_to(
                   issue.status.label,
-                  issues_path(status: { id: issue.status.id }, **params.as_json)
+                  issues_path(params.as_json.update({ status: { id: issue.status.id }}))
               ) if issue.status %>
         </div>
         <div class="divTableCell">
@@ -44,7 +44,7 @@
             <% issue.assignees.each do |assignee| %>
               <%= link_to(
                       assignee.name,
-                      issues_path(assignee: { id: assignee.id }, **params.as_json)
+                      issues_path(params.as_json.update({ assignee: { id: assignee.id }}))
                   ) %>
             <% end %>
           <% end %>
