@@ -34,7 +34,7 @@
         <div class="divTableCell">
           <%= link_to(
                   issue.status.label,
-                  issues_path(status: { id: issue.status.id }, **{}) # **{ "assignee"=>{ "value"=>"3" }}
+                  issues_path(status: { id: issue.status.id }, **{})
               ) if issue.status %>
         </div>
         <div class="divTableCell">
