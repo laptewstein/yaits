@@ -39,12 +39,16 @@ performance issues, along with what the future might hold for extending your ser
 make sensible check-ins throughout your project
  - [ ] zip up your repo (including the version control directory) and publish away.
 
+### How to run 
+1. from within project's folder, type `make up`
+2. from browser window, head http://0.0.0.0:8888/issues
+3. when done, do not forget to detach the containers with `make down` 
+
 #### Useful commands (along the Makefile)
 1. log into container: `make serve` 
 2. mysql db: `bundle exec rails db`
 3. testing: `bundle exec rails test <relative path dot rb>`
 4. testing rspec: `bundle exec rspec <relative path dot rb>`
-
 
 #### Project Routes
 ```

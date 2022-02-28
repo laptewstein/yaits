@@ -5,6 +5,8 @@ build:
 	docker-compose build
 
 up:
+	DB_USER='root' DB_PASSWORD='' docker-compose up -d
+upp:
 	DB_USER='root' DB_PASSWORD='' docker-compose up
 down:
 	docker-compose down
