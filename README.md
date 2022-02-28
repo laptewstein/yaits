@@ -1,6 +1,6 @@
 #### Unity Sample Issue Tracking Service
 
-## TLDR
+### TLDR
 0. From within `make serve`, bootstrap the database with `bundle exec rake db:create db:migrate`. Exit.
 1. From within the repo, `make up`.
 3. Head to http://0.0.0.0:8888/issues.
@@ -43,25 +43,26 @@ performance issues, along with what the future might hold for extending your ser
 make sensible check-ins throughout your project
  - [ ] zip up your repo (including the version control directory) and publish away.
 
-GET/POST Index `/issues(?...)`
+#### Endpoints 
+1. GET/POST Index `/issues(?...)`
 ![Screen Shot 2022-02-27 at 9 11 11 PM](https://user-images.githubusercontent.com/2070909/155913037-841b420a-0468-4c4e-aadb-9cdc75da8d80.png)
 
-GET New `/issues/new`
+2. GET New `/issues/new`
 ![Screen Shot 2022-02-27 at 9 11 27 PM](https://user-images.githubusercontent.com/2070909/155913049-be2bc65c-c5fb-43b2-a9a1-729dea1aa58f.png)
 
-GET/PATCH/PUT Edit `/issues/<id>/edit`
+3. GET/PATCH/PUT Edit `/issues/<id>/edit`
 ![Screen Shot 2022-02-27 at 9 11 46 PM](https://user-images.githubusercontent.com/2070909/155913065-80512a7a-30d3-4047-8789-f2b4ac079fbb.png)
 
-GET Show `/issues/<id>`
+4. GET Show `/issues/<id>`
 ![Screen Shot 2022-02-27 at 9 12 02 PM](https://user-images.githubusercontent.com/2070909/155913137-02ded449-6217-453a-91ef-239904846e8a.png)
 
-DELETE `/issues/<id>`
+5. DELETE `/issues/<id>`
 
 #### Useful commands (along the Makefile)
 1. log into container: `make serve` 
 2. mysql db: `bundle exec rails db`
-3. testing: `bundle exec rails test <relative path dot rb>`
-4. testing rspec: `bundle exec rspec <relative path dot rb>`
+3. testing: `bundle exec rails test`
+4. testing (rspec): `bundle exec rspec`
 
 #### Project Routes
 ```
