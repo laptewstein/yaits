@@ -50,14 +50,16 @@ class IssuesController < ApplicationController
       .reject(&:empty?)
       .map(&:to_i)
 
+    # iterate over currently assigned users and
+    # delete user ids who does not appear in the updated user set
     remaining_user_ids = @issue.assignees.map do |assignee|
       unless new_user_ids.include?(assignee.id)
-        # remove redundant assignees
         @issue.assignees.delete(assignee)
         next
       end
       assignee.id
     end
+    # add newly assigned users without removing overlapping ones
     @issue.assignees << User.find(new_user_ids - remaining_user_ids)
 
     respond_to do |format|
@@ -83,34 +85,58 @@ class IssuesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_issue
       @issue = Issue.find(params[:id])
     end
 
+    # required params for update / create
     def issue_params
       params
         .require(:issue)
         .permit(:title, :description, :issue_status_id, :issue_priority_id, :discipline_id, :assignee_ids => [])
     end
 
-    #optional params
+    # optional params for sorting / filtering
     def filter_params
-      params.fetch(:sort, {}).permit(:type, :criteria, :value)
+      params
+        .permit(:assignee => [:id], discipline: [:id], :status => [:id], priority: [ :value, :type ])
     end
 
     def filtered_issues
-      return Issue.all unless filter_params[:type] == 'assignee'
-      filter(Issue.all, filter_params[:type])
+      filter(Issue.all, filter_params.keys)
     end
 
-    def filter(queryset, filter_type)
-      queryset.select do |issue|
-        case filter_type
+    # recursively percolate/select based on filtering params
+    def filter(queryset, filter_types)
+      selector = filter_types.pop
+
+      return queryset unless selector
+      filtered_queryset = queryset.select do |issue|
+        case selector
         when 'assignee'
-          value = filter_params[:value].to_i
-          issue.assignees.map(&:id).include?(value)
+          id = filter_params[selector][:id].to_i
+          issue.assignees.map(&:id).include?(id)
+        when 'status'
+          unless issue.status.nil?
+            id = filter_params[selector][:id].to_i
+            issue.status.id == id
+          end
+        when 'discipline'
+          unless issue.discipline.nil?
+            id = filter_params[selector][:id].to_i
+            issue.discipline.id == id
+          end
+        when 'priority'
+          unless issue.priority.nil?
+            value = filter_params[selector][:value].to_i
+            if filter_params.dig(selector, :type) == 'exact'
+              issue.priority.value == value
+            else
+              issue.priority.value < value.succ
+            end
+          end
         end
       end
+      filter(filtered_queryset, filter_types)
     end
 end
