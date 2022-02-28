@@ -50,14 +50,16 @@ class IssuesController < ApplicationController
       .reject(&:empty?)
       .map(&:to_i)
 
+    # iterate over currently assigned users and
+    # delete user ids who does not appear in the updated user set
     remaining_user_ids = @issue.assignees.map do |assignee|
       unless new_user_ids.include?(assignee.id)
-        # remove redundant assignees
         @issue.assignees.delete(assignee)
         next
       end
       assignee.id
     end
+    # add newly assigned users without removing overlapping ones
     @issue.assignees << User.find(new_user_ids - remaining_user_ids)
 
     respond_to do |format|
