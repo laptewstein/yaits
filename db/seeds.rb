@@ -7,7 +7,7 @@ disciplines = [
   "Finance",
   "Sales",
   "Investor Relations",
-  "Strategic Partnerships"
+  "Strategic Partnerships",
 ]
 statuses    = [
   "Open",
@@ -15,7 +15,7 @@ statuses    = [
   "In review",
   "Closed",
   "Reopened",
-  "Wontfix"
+  "Wontfix",
 ]
 priorities  = [
   ["P0", 0],
@@ -23,13 +23,13 @@ priorities  = [
   ['High', 2],
   ['P2', 3],
   ['Medium', 4],
-  ['Low', 5]
+  ['Low', 5],
 ]
 users       = [
-  { name: 'CSAdmin',  email: 'csadmin@downtowncore.ca' },
-  { name: 'Oncall',   email: 'oncall@bigtech.ca'},
+  { name: 'CSAdmin',  email: 'csadmin@downtowncore.ca'  },
+  { name: 'Oncall',   email: 'oncall@bigtech.ca'        },
   { name: 'WatchBot', email: 'watchbot@downtowncore.ca' },
-  { name: 'IT-Desk', email: 'desk@tinytech.com' }
+  { name: 'IT-Desk',  email: 'desk@tinytech.com'        },
 ]
 
 priorities.each { |k, v| IssuePriority.create(label: k, value: v) }
