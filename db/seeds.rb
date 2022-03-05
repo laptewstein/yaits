@@ -29,7 +29,7 @@ users       = [
   { name: 'CSAdmin',  email: 'csadmin@downtowncore.ca' },
   { name: 'Oncall',   email: 'oncall@bigtech.ca'},
   { name: 'WatchBot', email: 'watchbot@downtowncore.ca' },
-  { name: 'IT-Desk', email: 'desk@tinytech.com'}
+  { name: 'IT-Desk', email: 'desk@tinytech.com' }
 ]
 
 priorities.each { |k, v| IssuePriority.create(label: k, value: v) }
