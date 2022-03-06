@@ -4,14 +4,30 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
+    field :disciplines, [Types::DisciplineType], null: false, description: "Returns static list of all disciplines"
+    field :statuses, [Types::IssueStatusType], null: false, description: "Returns static list of all statuses"
+    field :priorities, [Types::IssuePriorityType], null: false, description: "Returns static list of all priorities"
+    field :users, [Types::UserType], null: false, description: "Returns static list of all users"
+    field :issues, [Types::IssueType], null: false, description: "Returns static list of all issues"
 
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World!"
+    def disciplines
+      Discipline.all
+    end
+
+    def statuses
+      IssueStatus.all
+    end
+
+    def priorities
+      IssuePriority.all
+    end
+
+    def users
+      User.all
+    end
+
+    def issues
+      Issue.all
     end
   end
 end
