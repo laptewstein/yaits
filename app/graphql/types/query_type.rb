@@ -1,5 +1,7 @@
 module Types
   class QueryType < Types::BaseObject
+    description "The query root of this schema"
+
     # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
@@ -28,6 +30,14 @@ module Types
 
     def issues
       Issue.all
+    end
+
+    field :issue, Types::IssueType, "Find an issue by ID" do
+      argument :id, ID
+    end
+
+    def issue(id:)
+      Issue.find(id)
     end
   end
 end
