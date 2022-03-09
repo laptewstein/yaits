@@ -3,18 +3,18 @@
 ## TLDR
 0. From within `make serve`, bootstrap the database with `bundle exec rake db:create db:migrate`. Exit.
 1. From within the repo, `make up`.
-3. Head to http://0.0.0.0:8888/issues.
+3. Head to http://0.0.0.0:8888.
 4. Detach containers with `make down`. 
 
 ## Short Description, a living yet incomplete document
 _YAITS_ is a containerized rails application. 
-It has a single [controller](https://github.com/Kartoshka548/yaits/blob/main/app/controllers/issues_controller.rb) exposing basic CRUD API [endpoints](https://github.com/Kartoshka548/yaits/blob/main/config/routes.rb#L2) and a few [databases tables](https://github.com/Kartoshka548/yaits/tree/main/db/migrate) for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
-Note: `index` admin page filtering is **additive**
-Currently we are supporting User signups only via the console.
+- It constitutes of a single [controller](https://github.com/Kartoshka548/yaits/blob/main/app/controllers/issues_controller.rb) exposing basic CRUD API [endpoints](https://github.com/Kartoshka548/yaits/blob/main/config/routes.rb#L2) and a few [databases tables](https://github.com/Kartoshka548/yaits/tree/main/db/migrate) for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
+- Note: `index` admin page filtering is **additive**, meaning that after a few clicks, we would have to start over.
+- Currently we are supporting User signups only via the console.
 
 > One user can be working on many issues, and _any_ issue can be assigned to _any_ active user.
 
-Currently we do not _retain creator and reporter information_, even though we do have a [_many-to-many relationship_](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220226040845_add_issues_to_users.rb) ties between `User` and `Issue` models. One way to keep this info tagging along is to create a "data" pocket (of key-value type storage), holding reporter and creator's tracks, or _maybe_ change the way how we retrieve issue [_assignees_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb#L5-L7) from issue's associated _users_ which might (or might not) include the roles above. Hybrid of these is even better. 
+Currently we do not _retain creator and reporter information_, even though we do have a [_many-to-many relationship_](https://github.com/Kartoshka548/yaits/blob/main/db/migrate/20220226040845_add_issues_to_users.rb) ties between `User` and `Issue` models. One way to keep this info tagging along is to create a "data" pocket (of key-value type storage), holding reporter and creator's tracks, or _maybe_ change the way how we retrieve issue [_assignees_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb#L5-L7) from issue's associated _users_ which might (or might not) include the roles above. A hybrid between these two roadblocks is probably optimal going forward. 
 
 
 ## Task Overview
@@ -76,9 +76,9 @@ make sensible check-ins throughout your project
 4. testing (rspec): `bundle exec rspec`
 5. sample initial Priorities, Statuses and Disciplines: 
 ```
-[["P0", 0], ["P1", 1], ['High', 2],['P2', 3],['Medium', 4],['Low', 5]].each { |k, v| IssuePriority.new(label: k, value: v).save }
-["Engineering", "UX", "Analytics", "CS", "Marketing", "Finance", "Sales"].each { |e| Discipline.new(label: e).save }
-["Open", "In progress", "In review", "Closed", "Reopened", "Wontfix"].each { |e| IssueStatus.new(label: e).save }
+[["P0", 0], ["P1", 1], ['High', 2],['P2', 3],['Medium', 4],['Low', 5]]
+["Engineering", "UX", "Analytics", "CS", "Marketing", "Finance", "Sales"]
+["Open", "In progress", "In review", "Closed", "Reopened", "Wontfix"]
 ```
 #### Project Routes
 ```
