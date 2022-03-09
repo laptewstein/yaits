@@ -11,6 +11,9 @@ module Types
     field :priorities,  [Types::IssuePriorityType], null: false, description: "Returns static list of all priorities"
     field :users,       [Types::UserType],          null: false, description: "Returns static list of all users"
     field :issues,      [Types::IssueType],         null: false, description: "Returns static list of all issues"
+    field :issue, Types::IssueType, "Find an issue by ID" do
+      argument :id, ID
+    end
 
     def disciplines
       Discipline.all
@@ -30,10 +33,6 @@ module Types
 
     def issues
       Issue.all
-    end
-
-    field :issue, Types::IssueType, "Find an issue by ID" do
-      argument :id, ID
     end
 
     def issue(id:)
