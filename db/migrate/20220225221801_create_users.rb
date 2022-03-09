@@ -16,6 +16,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     # +------------+--------------+------+-----+---------+----------------+
     create_table :users do |t|
       t.timestamps
+      # email:uniq
+      # password:digest
     end
     execute(%Q{
       ALTER TABLE `users`
