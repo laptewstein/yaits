@@ -8,7 +8,7 @@
 
 ## Short Description, a living yet incomplete document
 _YAITS_ is a containerized rails application. 
-- It constitutues of a single [controller](https://github.com/Kartoshka548/yaits/blob/main/app/controllers/issues_controller.rb) exposing basic CRUD API [endpoints](https://github.com/Kartoshka548/yaits/blob/main/config/routes.rb#L2) and a few [databases tables](https://github.com/Kartoshka548/yaits/tree/main/db/migrate) for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
+- It constitutes of a single [controller](https://github.com/Kartoshka548/yaits/blob/main/app/controllers/issues_controller.rb) exposing basic CRUD API [endpoints](https://github.com/Kartoshka548/yaits/blob/main/config/routes.rb#L2) and a few [databases tables](https://github.com/Kartoshka548/yaits/tree/main/db/migrate) for rails models such as [_Issue_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue.rb), [_Discipline_](https://github.com/Kartoshka548/yaits/blob/main/app/models/discipline.rb), [_Priority_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_priority.rb), [_Status_](https://github.com/Kartoshka548/yaits/blob/main/app/models/issue_status.rb), and of course, the [_User_](https://github.com/Kartoshka548/yaits/blob/main/app/models/user.rb). 
 - Note: `index` admin page filtering is **additive**, meaning that after a few clicks, we would have to start over.
 - Currently we are supporting User signups only via the console.
 
@@ -76,9 +76,9 @@ make sensible check-ins throughout your project
 4. testing (rspec): `bundle exec rspec`
 5. sample initial Priorities, Statuses and Disciplines: 
 ```
-[["P0", 0], ["P1", 1], ['High', 2],['P2', 3],['Medium', 4],['Low', 5]].each { |k, v| IssuePriority.new(label: k, value: v).save }
-["Engineering", "UX", "Analytics", "CS", "Marketing", "Finance", "Sales"].each { |e| Discipline.new(label: e).save }
-["Open", "In progress", "In review", "Closed", "Reopened", "Wontfix"].each { |e| IssueStatus.new(label: e).save }
+[["P0", 0], ["P1", 1], ['High', 2],['P2', 3],['Medium', 4],['Low', 5]]
+["Engineering", "UX", "Analytics", "CS", "Marketing", "Finance", "Sales"]
+["Open", "In progress", "In review", "Closed", "Reopened", "Wontfix"]
 ```
 #### Project Routes
 ```
