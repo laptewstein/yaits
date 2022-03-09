@@ -14,3 +14,6 @@ down:
 serve:
 	docker-compose run -e DB_USER='root' -e DB_PASSWORD='' serve /bin/bash
 
+servebound:
+	docker-compose run -e DB_USER='root' -e DB_PASSWORD='' -p 8888:8888 serve /bin/bash
+
