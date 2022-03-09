@@ -3,7 +3,7 @@
 ## TLDR
 0. From within `make serve`, bootstrap the database with `bundle exec rake db:create db:migrate`. Exit.
 1. From within the repo, `make up`.
-3. Head to http://0.0.0.0:8888/issues.
+3. Head to http://0.0.0.0:8888.
 4. Detach containers with `make down`. 
 
 ## Short Description, a living yet incomplete document
