@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
-  # belongs_to :discipline,     optional: true
-  # belongs_to :issue_priority, optional: true
-  # belongs_to :issue_status,   optional: true
-  # has_and_belongs_to_many :users
+  # many to many
+  has_and_belongs_to_many :employees, join_table: 'employee_projects'
+
+  # many to one (many employees can have multiple projects)
+  # has_one :employee_project
+  # has_one :employee, through: :employee_project
 end

@@ -40,13 +40,18 @@ User.create(users)
 
 
 departments = [ 'Transportation', 'Legal', 'Monitoring', 'Accounts']
+departments.each { |d| Department.create(name: d) }
 projects = ['1M', '5M', '10M', '1B', '100M']
 employees = [
   ['Steffany', 'St', 1 ],
   ['Valeria', 'Va', 1 ],
   ['Lindsay', 'Li', 2 ],
-  ['Chelsea', 'Ch', 3 ]
+  ['Chelsea', 'Ch', 3 ],
+  ['John', 'Jo', 4]
 ]
-employee_projects = [ [1, 1], [2,1], [2,2], [3,3], [4,4] ]
-
-departments.each { |d| Department.create(name: d) }
+employee_projects = [ [1, 1], [2,1], [2,2], [3,3], [4,4], [4, 1] ]
+projects.each { |p| Project.create(title: p) }
+employees.each do |f, l, d|
+  Employee.create(first_name: f, last_name: l, department_id: d)
+end
+employee_projects.each { |e, p| EmployeeProject.create(employee_id: e, project_id: p) }
