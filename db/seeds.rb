@@ -36,3 +36,17 @@ priorities.each { |k, v| IssuePriority.create(label: k, value: v) }
 disciplines.each { |e| Discipline.create(label: e) }
 statuses.each { |e| IssueStatus.crete(label: e) }
 User.create(users)
+
+
+
+departments = [ 'Transportation', 'Legal', 'Monitoring', 'Accounts']
+projects = ['1M', '5M', '10M', '1B', '100M']
+employees = [
+  ['Steffany', 'St', 1 ],
+  ['Valeria', 'Va', 1 ],
+  ['Lindsay', 'Li', 2 ],
+  ['Chelsea', 'Ch', 3 ]
+]
+employee_projects = [ [1, 1], [2,1], [2,2], [3,3], [4,4] ]
+
+departments.each { |d| Department.create(name: d) }
